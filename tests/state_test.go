@@ -77,6 +77,7 @@ var testVMConfig = func() vm.Config {
 	flag.StringVar(&vmconfig.EVMInterpreter, utils.EVMInterpreterFlag.Name, utils.EVMInterpreterFlag.Value, utils.EVMInterpreterFlag.Usage)
 	flag.StringVar(&vmconfig.EWASMInterpreter, utils.EWASMInterpreterFlag.Name, utils.EWASMInterpreterFlag.Value, utils.EWASMInterpreterFlag.Usage)
 	flag.Parse()
+	vm.InitEVMC(vmconfig.EVMInterpreter, vmconfig.EWASMInterpreter)
 	return vmconfig
 }()
 
