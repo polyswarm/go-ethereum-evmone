@@ -324,3 +324,13 @@ func (s *Snapshot) inturn(number uint64, signer common.Address) bool {
 	}
 	return (number % uint64(len(signers))) == uint64(offset)
 }
+
+func (s *Snapshot) calcDifficulty(number uint64, signer common.Address) uint64 {
+	signers, offset := s.signers(), uint64(0)
+	num_signers := uint64(len(signers))
+	for offset < num_signers && signers[offset] != signer {
+		offset++
+	}
+	current := number % num_signers
+	return (num_signers-offset+current-1)%num_signers + 1
+}

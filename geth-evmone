@@ -1,0 +1,2 @@
+#!/bin/sh
+geth.orig --vm.evm=/usr/local/lib/libevmone.so $@
